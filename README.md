@@ -6,8 +6,8 @@
 3. Choose **Blazor WebAssembly App** as the project type.
 4. On the **Additional Information** page, tick the **Progressive Web Application** checkbox.  
 >This is important so Visual Studio will include the necessary files needed to make your page reload offline.
-5. After creating the project, open the **wwwroot\index.html** file and delete the line that has the following code: `<base href="/" />`.  Including this line will make make all relative URL's base to the root of the subdomain. [More info][1]. 
-> GitHub Pages have URL's in the format of https://\<*username*>.github.io/\<*repository name*>. So, if your GitHub Page URL is https://my_username.github.io/MyRepository, requests to myScript.js, for example, will be fetched from https://my_username.github.io/myScript.js -- which is not what we wanted. We want it to be fetched from https://my_username.github.io/MyRepository/myScript.js.
+5. After creating the project, open the **wwwroot\index.html** file and delete the line that has the following code: `<base href="/" />`.  Including this line will make all relative URL's base to the root of the subdomain. [More info][1]. 
+> GitHub Pages have URL's in the format of https://\<*username*>.github.io/\<*repository name*>. So, if your GitHub Page URL is https://my_username.github.io/MyRepository, requests to myScript.js, for example, will be fetched from https://my_username.github.io/myScript.js --- which is not what we wanted. We want it to be fetched from https://my_username.github.io/MyRepository/myScript.js.
 6. Add a file named **.gitattributes** to the root of your project. Add the following content to the file:
 ``` text
 # put these in .gitattributes file
@@ -16,13 +16,14 @@
 *.css binary
 *.html binary
 ```
-> This is needed because line endings are converted to Unix style when you commit source files like js, json, css, & html. [More info](2). And we need to push source files without any modification.
+> This is needed because line endings are converted to Unix style when you commit source files like js, json, css, & html. [More info][2]. And we need to push source files without any modification.
 7. Add a file named **.nojekyll** to the root of your project.
-> This is needed to prevent Jekyll from processing your files, including your directories that start with underscore. [More info](3).
-8. `Publish` your project by running the following at the root directory of your project: `dotnet publish --configuration Release`
-9. `Push` everything in the *\bin\Release\net6.0\publish\wwwroot* directory to your repository.
+> This is needed to prevent Jekyll from processing your files, including your directories that start with underscore. [More info][3].
+8. `Publish` your project by running the following at the root directory of your project: 
+`dotnet publish --configuration Release`
+10. `Push` everything in the *\bin\Release\net6.0\publish\wwwroot* directory to your repository.
 > Optionally, exclude these files since GitHub have their own compression. 
->- \_framework\*.br`
+>- \_framework\*.br
 >- \_framework\*.gz
 10. Done. Your website is now live.
 
